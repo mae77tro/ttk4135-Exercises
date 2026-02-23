@@ -1,2 +1,2 @@
-# ttk4135-Exersices
+# ttk4135-Exercises
 Øvingene mine i ttk4135
