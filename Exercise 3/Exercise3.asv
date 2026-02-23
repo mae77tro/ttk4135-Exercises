@@ -1,0 +1,34 @@
+%% My problem
+% min c'x s.t. Ax = b
+clear('all')
+clc
+c = [-3 -2 0 0]';
+A = [2 1 1 0;
+     1 3 0 1];
+b = [8 15]';
+
+% making contour plot
+x1 = linspace(0,10,100);
+x2 = linspace(0,40,100);
+X = [x1;
+     x2;];
+
+[X1,X2]= meshgrid(x1,x2);
+Y = c(1)*X1+c(2)* X2;
+hold on
+contour(X1,X2,Y);
+
+%Plotting constraints
+h1 = 8-2*x1;
+h2 = 15/3-(1/3)*x1;
+plot(x1,h1, "--",Color="Black")
+plot(x1,h2, "--", Color="Black")
+hold off
+% Solving using simplex
+x0 = [0 0 8 15]';
+[x, fval, iterates] = simplex(c,A,b,x0,'report');
+
+% Solution is at constraint intersection, and all constraints are active
+for i = 1:width(iterates)
+
+end
